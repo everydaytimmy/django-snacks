@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.urls.base import reverse
 
 
 class Snack(models.Model):
@@ -9,3 +10,7 @@ class Snack(models.Model):
 
   def __str__(self):
     return self.name[:50]
+
+  def get_absolute_url(self):
+      return reverse("snack_detail", args=[str(self.id)])
+  
